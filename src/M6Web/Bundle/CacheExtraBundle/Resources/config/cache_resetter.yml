@@ -1,0 +1,20 @@
+parameters:
+    m6.cache_resetter.class:          'M6Web\Bundle\CacheExtraBundle\Resetter\CacheResetter'
+    m6.cache_resetter.listener.class: 'M6Web\Bundle\CacheExtraBundle\Listener\CacheResetterListener'
+
+services:
+    m6.cache_resetter:
+        class: %m6.cache_resetter.class%
+        arguments:
+            - @event_dispatcher
+            - %cache_resetter.cache_clear_param%
+            - @m6web.firewall.provider
+        calls:
+            - [ addAllowedIps, [ %cache_resetter.ip_list.allowed% ] ]
+
+    m6.cache_resetter.listener:
+        class: %m6.cache_resetter.listener.class%
+        arguments:
+            - @m6.cache_resetter
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest}

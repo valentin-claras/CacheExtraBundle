@@ -1,0 +1,11 @@
+parameters:
+    m6.data_collector.cache_action.class:    'M6Web\Bundle\CacheExtraBundle\DataCollector\CacheActionDataCollector'
+    m6.data_collector.cache_action.template: 'M6WebCacheExtraBundle:Collector:cache_action'
+
+services:
+    m6.data_collector.cache_action:
+        class: %m6.data_collector.cache_action.class%
+        arguments:
+            - @?m6.action_cache.listener
+        tags:
+            - { name: data_collector, template: %m6.data_collector.cache_action.template%, id: 'cache_action' }

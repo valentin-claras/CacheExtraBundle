@@ -1,0 +1,17 @@
+parameters:
+    m6.action_cache.listener.class:    'M6Web\Bundle\CacheExtraBundle\Listener\CacheActionListener'
+    m6.varnish_purger.class:           'M6Web\Bundle\CacheExtraBundle\Listener\VarnishPurgeListener'
+    m6.fragment.renderer.cached.class: 'M6Web\Bundle\CacheExtraBundle\Fragment\CachedFragmentRenderer'
+
+services:
+#    m6.varnish_purger:
+#        class: %m6.varnish_purger.class%
+#        arguments: [@m6.cache_resetter, @?m6.varnish.purge.helper]
+#        tags:
+#            - { name: kernel.event_subscriber }
+
+    m6.fragment.renderer.cached:
+        class: %m6.fragment.renderer.cached.class%
+        arguments: [@http_kernel]
+        tags:
+            - { name: kernel.fragment_renderer }
