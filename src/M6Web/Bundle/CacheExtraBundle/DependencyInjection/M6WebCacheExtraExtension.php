@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class M6CacheExtraExtension extends Extension
+class M6WebCacheExtraExtension extends Extension
 {
     protected $twigExtension = array('renderCache');
 
