@@ -56,9 +56,4 @@ interface CacheInterface
      */
     public function ttl($key);
 
-    /**
-     * Set a cache resetter serviceto ignore cache
-     * @param Object $cacheResetterService The cache resetter service
-     */
-    public function setCacheResetterService(CacheResetterInterface $cacheResetterService);
 }
