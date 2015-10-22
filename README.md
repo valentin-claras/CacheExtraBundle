@@ -1,3 +1,6 @@
+**This bundle is deprecated**
+
+
 # SF2 Cache Extra
 
 cache_resetter.cache_clear_param
