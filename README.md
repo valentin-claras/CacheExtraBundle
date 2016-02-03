@@ -15,5 +15,5 @@ Add some features for caching system:
 ## Launch tests
 
 ```shell
-$ ./vendor/bin/atoum
+$ ./bin/atoum
 ```

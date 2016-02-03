@@ -204,14 +204,16 @@ class CacheActionListener extends atoum\test
         $this
             ->mock($event)
                 ->call('getRequest')
-                ->never();
+                    ->never()
+        ;
 
         $cacheListener->onKernelResponse($filterEvent);
 
         $this
             ->mock($response)
                 ->call('getStatusCode')
-                ->never();
+                    ->never()
+        ;
     }
 
     /**
@@ -246,25 +248,27 @@ class CacheActionListener extends atoum\test
 
         $this
             ->mock($event)
-                ->call('getRequest')->once()
+                ->call('getRequest')
+                    ->once()
 
             ->mock($cacheService)
                 ->call('getConcurrent')
-                ->withArguments($cacheKey)
-                ->once();
+                    ->withArguments($cacheKey)
+                        ->once()
+        ;
 
         $cacheListener->onKernelResponse($filterEvent);
 
         $this
             ->mock($response)
                 ->call('getStatusCode')
-                ->once()
+                    ->once()
 
             ->mock($cacheService)
                 ->call('setConcurrent')
-                ->withArguments($cacheKey, self::RESPONSE_CONTENT, self::RESPONSE_MAXAGE)
-                ->once()
-                ;
+                    ->withArguments($cacheKey, self::RESPONSE_CONTENT, self::RESPONSE_MAXAGE)
+                        ->once()
+        ;
     }
 
     /**
@@ -275,9 +279,7 @@ class CacheActionListener extends atoum\test
     public function testException()
     {
         $object = new \mock\ObjectFake();
-        $object->getMockController()->getParam = function () {
-            return 1;
-        };
+        $object->getMockController()->getParam = 1;
 
         $requestAttributes = [
             'server_cache' => true,
@@ -301,13 +303,11 @@ class CacheActionListener extends atoum\test
         $cacheListener->setCacheKeyExclude(['_template']);
 
         $this
-            ->exception(
-                function() use ($event, $cacheListener) {
-                    $cacheListener->onKernelRequest($event);
-                }
-            )
-            ->isInstanceOf('M6Web\Component\CacheExtra\CacheException')
-            ->message
-                ->match('#Request parameter "(.*)" is not valid#');
+            ->exception(function() use ($event, $cacheListener) {
+                $cacheListener->onKernelRequest($event);
+            })
+                ->isInstanceOf('M6Web\Component\CacheExtra\CacheException')
+                ->message
+                    ->match('#Request parameter "(.*)" is not valid#');
     }
 }
