@@ -14,7 +14,7 @@ use M6Web\Component\CacheExtra\Resetter\CacheResetterInterface;
 class CacheResetter implements CacheResetterInterface
 {
     protected $eventDispatcher;
-    protected $allowedIps = array();
+    protected $allowedIps = [];
     protected $paramName;
     protected $request;
     protected $shouldReset;

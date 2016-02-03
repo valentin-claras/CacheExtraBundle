@@ -36,10 +36,10 @@ class CacheActionListener implements EventSubscriberInterface
      */
     public function __construct($debug, $env)
     {
-        $this->cachedBlocks = array();
+        $this->cachedBlocks = [];
         $this->debug        = $debug;
         $this->env          = $env;
-        $this->excludeKey   = array();
+        $this->excludeKey   = [];
     }
 
     /**

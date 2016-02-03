@@ -1,16 +1,15 @@
 {
     "name": "m6web/cache-extra-bundle",
     "description": "SF2 Cache extra features",
-
     "type": "symfony-bundle",
-
-    "autoload": {
-        "psr-0": { "": "src/" }
-    },
-
     "prefer-stable": true,
-
+    "require": {
+        "php": ">5.4"
+    },
     "require-dev": {
         "m6web/firewall-bundle": "~1.0"
+    },
+    "autoload": {
+        "psr-0": { "": "src/" }
     }
 }

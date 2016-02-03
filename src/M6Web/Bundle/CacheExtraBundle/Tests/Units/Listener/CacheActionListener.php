@@ -81,9 +81,9 @@ class CacheActionListener extends atoum\test
         $response = new \mock\Symfony\Component\HttpFoundation\Response(
             self::RESPONSE_CONTENT,
             $satusCode,
-            $headers = array(
+            $headers = [
                 'cache-control' => 'max-age:'.self::RESPONSE_MAXAGE
-            )
+            ]
         );
 
         return $response;
@@ -127,49 +127,49 @@ class CacheActionListener extends atoum\test
      */
     public function dataProvider()
     {
-        return array(
-            array(
-                array(
+        return [
+            [
+                [
                     'server_cache' => true,
                     'controllerName' => 'FakeController',
                     'id' => 42,
-                    'tableau' => array('test' => 'value'),
-                ),
-                array(
+                    'tableau' => ['test' => 'value'],
+                ],
+                [
                     'server_cache' => true,
                     'controllerName' => 'FakeController',
                     'id' => 42,
-                    'tableau' => array('test' => 'value'),
-                )
-            ),
-            array(
-                array(
+                    'tableau' => ['test' => 'value'],
+                ]
+            ],
+            [
+                [
                     'server_cache' => true,
                     'controllerName' => 'FakeController',
                     'id' => 42,
                     '_template' => 'Template',
-                ),
-                array(
+                ],
+                [
                     'server_cache' => true,
                     'controllerName' => 'FakeController',
                     'id' => 42,
-                )
-            ),
-            array(
-                array(
+                ]
+            ],
+            [
+                [
                     'server_cache' => true,
                     'controllerName' => 'FakeController',
                     'id' => 42,
-                    'tableau' => array('test' => array('foo' => 'bar')),
-                ),
-                array(
+                    'tableau' => ['test' => ['foo' => 'bar']],
+                ],
+                [
                     'server_cache' => true,
                     'controllerName' => 'FakeController',
                     'id' => 42,
-                    'tableau' => array('test' => array('foo' => 'bar')),
-                )
-            ),
-        );
+                    'tableau' => ['test' => ['foo' => 'bar']],
+                ]
+            ],
+        ];
     }
 
     /**
@@ -279,13 +279,13 @@ class CacheActionListener extends atoum\test
             return 1;
         };
 
-        $requestAttributes = array(
+        $requestAttributes = [
             'server_cache' => true,
             'controllerName' => 'FakeController',
             'id' => 42,
             '_template' => 'Template',
             'object' => $object,
-        );
+        ];
 
         $cacheListener = new BaseCacheActionListener(false, self::CACHE_ENV);
 
@@ -298,7 +298,7 @@ class CacheActionListener extends atoum\test
         $cache = $this->buildMockCacheInterface();
 
         $cacheListener->setCacheService($cache);
-        $cacheListener->setCacheKeyExclude(array('_template'));
+        $cacheListener->setCacheKeyExclude(['_template']);
 
         $this
             ->exception(

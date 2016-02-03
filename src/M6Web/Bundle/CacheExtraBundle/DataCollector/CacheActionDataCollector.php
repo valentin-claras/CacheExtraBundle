@@ -29,12 +29,12 @@ class CacheActionDataCollector extends DataCollector
      */
     public function collect(Request $request, Response $response, \Exception $exception = null)
     {
-        $this->data = array(
+        $this->data = [
             'blocks' => null,
             'total'  => null,
             'hits'   => null,
             'miss'   => null,
-        );
+        ];
 
         if (!is_null($this->cacheActionListener)) {
             $blocks = $this->cacheActionListener->getCachedBlocks();
@@ -47,12 +47,12 @@ class CacheActionDataCollector extends DataCollector
                 $cached ? $nbHits++ : $nbMiss++;
             }
 
-            $this->data = array(
+            $this->data = [
                 'blocks' => $blocks,
                 'total'  => $total,
                 'hits'   => $nbHits,
                 'miss'   => $nbMiss
-            );
+            ];
         }
     }
 

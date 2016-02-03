@@ -58,7 +58,7 @@ class M6WebCacheExtraExtension extends Extension
         if (!$container->hasParameter('m6.listener.cache_action.excludekeys')) {
             $container->setParameter(
                 'm6.listener.cache_action.excludekeys',
-                array('_template', '_cache', '_method')
+                ['_template', '_cache', '_method']
             );
         }
 

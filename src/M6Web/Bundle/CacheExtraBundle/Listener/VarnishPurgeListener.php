@@ -117,10 +117,10 @@ class VarnishPurgeListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
-            'kernel.request' => array(
-                array('onKernelRequest', 0),
-            ),
-        );
+        return [
+            'kernel.request' => [
+                ['onKernelRequest', 0],
+            ],
+        ];
     }
 }
