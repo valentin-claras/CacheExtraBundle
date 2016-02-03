@@ -29,6 +29,13 @@ class CacheActionDataCollector extends DataCollector
      */
     public function collect(Request $request, Response $response, \Exception $exception = null)
     {
+        $this->data = array(
+            'blocks' => null,
+            'total'  => null,
+            'hits'   => null,
+            'miss'   => null,
+        );
+
         if (!is_null($this->cacheActionListener)) {
             $blocks = $this->cacheActionListener->getCachedBlocks();
             $total  = 0;

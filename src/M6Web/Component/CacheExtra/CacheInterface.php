@@ -4,11 +4,7 @@ namespace M6Web\Component\CacheExtra;
 use M6Web\Component\CacheExtra\Resetter\CacheResetterInterface;
 
 /**
- * Interface qui décrit les méthodes que doit exposer un système de cache
- * Cette interface doit être implémentée par les services tierces de cache: Redis, FileSystem, Memcache, etc...
- *
- * TODO à supprimer ?
- *
+ * Cache Interface
  */
 interface CacheInterface
 {
@@ -30,6 +26,14 @@ interface CacheInterface
      */
     public function get($key);
 
+    /**
+     * Returns the value for a key.
+     *
+     * @param string $key A unique key
+     *
+     * @return string|null The value in the cache
+     */
+    public function getConcurrent($key);
 
     /**
      * Sets a value in the cache.
@@ -40,6 +44,14 @@ interface CacheInterface
      */
     public function set($key, $value, $ttl = null);
 
+    /**
+     * Sets a value in the cache.
+     *
+     * @param string  $key   A unique key
+     * @param string  $value The value to cache
+     * @param integer $ttl   Time to live in seconds
+     */
+    public function setConcurrent($key, $value, $ttl = null);
 
     /**
      * Removes a value from the cache.
@@ -56,4 +68,10 @@ interface CacheInterface
      */
     public function ttl($key);
 
+    /**
+     * Set a cache resetter service to ignore cache
+     *
+     * @param CacheResetterInterface $cacheResetterService The cache resetter service
+     */
+    public function setCacheResetterService(CacheResetterInterface $cacheResetterService);
 }

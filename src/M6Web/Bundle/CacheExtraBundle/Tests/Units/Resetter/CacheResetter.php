@@ -100,15 +100,12 @@ class CacheResetter extends atoum\test
         $this
             ->assert
                 ->boolean($cacheResetter->hasClearingParam())
-                    ->isIdenticalTo(true)
+                    ->isTrue()
 
                 // Should reset cache ?
-
-                ->exception(function () use ($cacheResetter) {
-                    $cacheResetter->shouldResetCache();
-                })
-                    ->isInstanceOf("M6Web\Component\CacheExtra\CacheException")
-                ;
+                ->boolean($cacheResetter->shouldResetCache())
+                    ->isFalse()
+        ;
     }
 
     public function testHasBadClearingParam()
@@ -286,20 +283,10 @@ class CacheResetter extends atoum\test
         ;
 
         // Should reset cache ?
-
-        if ($allowed) {
-            $this
-                ->boolean($cacheResetter->shouldResetCache())
-                    ->isIdenticalTo(true)
-            ;
-        } else {
-            $this
-                ->exception(function () use ($cacheResetter) {
-                    $cacheResetter->shouldResetCache();
-                })
-                    ->isInstanceOf("M6Web\Component\CacheExtra\CacheException")
-            ;
-        }
+        $this
+            ->boolean($cacheResetter->shouldResetCache())
+                ->isIdenticalTo($allowed)
+        ;
     }
 
     /**

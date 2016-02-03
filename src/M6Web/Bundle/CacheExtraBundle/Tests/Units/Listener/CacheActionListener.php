@@ -249,7 +249,7 @@ class CacheActionListener extends atoum\test
                 ->call('getRequest')->once()
 
             ->mock($cacheService)
-                ->call('get')
+                ->call('getConcurrent')
                 ->withArguments($cacheKey)
                 ->once();
 
@@ -261,7 +261,7 @@ class CacheActionListener extends atoum\test
                 ->once()
 
             ->mock($cacheService)
-                ->call('set')
+                ->call('setConcurrent')
                 ->withArguments($cacheKey, self::RESPONSE_CONTENT, self::RESPONSE_MAXAGE)
                 ->once()
                 ;
