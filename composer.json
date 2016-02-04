@@ -12,7 +12,10 @@
         "atoum/atoum": "~2.0"
     },
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-4": {
+            "M6Web\\Bundle\\CacheExtraBundle\\": "src/Bundle",
+            "M6Web\\Component\\CacheExtra\\": "src/Component"
+        }
     },
     "config": {
         "bin-dir": "bin/"

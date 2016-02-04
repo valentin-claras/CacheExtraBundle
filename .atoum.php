@@ -1,2 +1,3 @@
 <?php
-$runner->addTestsFromDirectory(__DIR__.'/src/M6Web/Bundle/CacheExtraBundle/Tests');
+
+$runner->addTestsFromDirectory(__DIR__.'/src/Bundle/Tests');
